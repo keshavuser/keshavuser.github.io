@@ -7,6 +7,7 @@ var CACHE_NAME = 'my-site-cache-v1';
     ];
 
     self.addEventListener('install', function(event) {
+      alert();
       // Perform install steps
       event.waitUntil(
         caches.open(CACHE_NAME)
@@ -24,6 +25,7 @@ var CACHE_NAME = 'my-site-cache-v1';
       .then(function(response) {
         // Cache hit - return response
         if (response) {
+            alert(response);
           return response;
         }
 
@@ -38,6 +40,8 @@ var CACHE_NAME = 'my-site-cache-v1';
             // Check if we received a valid response
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
+            } else {
+                alert("not donr");
             }
 
             // IMPORTANT: Clone the response. A response is a stream
